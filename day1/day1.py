@@ -1,5 +1,5 @@
-with open("./day1/input.txt") as f:
-    instruction_list = f.read().splitlines()
+with open("./day1/input.txt", encoding="utf-8") as f:
+    instruction_list: list[str] = f.read().splitlines()
 
 max_weight: int = 0
 current_elf_weight: int = 0

@@ -1,7 +1,7 @@
 import string
 
-with open("./day3/input.txt") as f:
-    instruction_list = f.read().splitlines()
+with open("./day3/input.txt", encoding="utf-8") as f:
+    instruction_list: list[str] = f.read().splitlines()
 
 score = 0
 score_dict = {letter: n + 1 for n, letter in enumerate(string.ascii_letters)}

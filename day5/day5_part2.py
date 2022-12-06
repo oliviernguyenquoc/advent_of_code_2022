@@ -1,8 +1,8 @@
 NB_STACKS = 9
 
 stack: list[list[str]] = [[] for i in range(NB_STACKS)]
-with open("./day5/input.txt") as f:
-    instruction_list = f.read().splitlines()
+with open("./day5/input.txt", encoding="utf-8") as f:
+    instruction_list: list[str] = f.read().splitlines()
 
 for instruction in instruction_list:
     if (

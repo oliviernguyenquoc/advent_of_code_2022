@@ -1,5 +1,5 @@
-with open("./day2/input.txt") as f:
-    instruction_list = f.read().splitlines()
+with open("./day2/input.txt", encoding="utf-8") as f:
+    instruction_list: list[str] = f.read().splitlines()
 
 guide_dict: dict[str, dict[str, str]] = {
     "A": {
