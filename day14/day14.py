@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+# Result for part 1 or part 2
 PART_2 = True
 
 
