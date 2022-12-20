@@ -39,7 +39,7 @@ while instruction_idx < len(instruction_list):
     else:
         wait_cycle -= 1
 
-    line = line + ("#" if X - 1 <= cycle % 40 <= X + 1 else ".")
+    line = line + ("#" if X - 1 <= cycle % 40 <= X + 1 else " ")
 
 
 print(res)
