@@ -30,6 +30,8 @@ class Environment:
         self.points[(x, y)] = "S"
 
     def marked_as_occupied(self, sensor_x: int, sensor_y: int, distance: int):
+        """PART 1: Check only the row we are looking for"""
+
         for i in range(sensor_x - distance, sensor_x + distance):
             j = ROW_CHECKED
             distance_sensor_to_point = (max(sensor_x, i) - min(sensor_x, i)) + (
@@ -40,6 +42,8 @@ class Environment:
                     self.points[(i, j)] = "#"
 
     def marked_as_potential_detress(self, sensor_x: int, sensor_y: int, distance: int):
+        """Mark all intersection of radars (Potential distress point to reduce the number of points to check)"""
+
         all_edge_points = []
         for i in range(distance):
             all_edge_points += [
@@ -72,27 +76,29 @@ class Environment:
 
 print("------ PART 1 ------")
 
-# environment = Environment({})
+environment = Environment({})
 
-# for instruction in instruction_list:
-#     sensor_x, sensor_y, beacon_x, beacon_y = re.findall(
-#         r"Sensor at x=([^,]*), y=([^:]*): closest beacon is at x=([^,]*), y=([^:]*)",
-#         instruction,
-#     )[0]
-#     sensor = (int(sensor_x), int(sensor_y))
-#     beacon = (int(beacon_x), int(beacon_y))
-#     radar = Radar(sensor=sensor, beacon=beacon)
-#     environment.add_beacon(*beacon)
-#     environment.add_sensor(*sensor)
-#     environment.marked_as_occupied(*sensor, radar.get_distance())
+for instruction in instruction_list:
+    sensor_x, sensor_y, beacon_x, beacon_y = re.findall(
+        r"Sensor at x=([^,]*), y=([^:]*): closest beacon is at x=([^,]*), y=([^:]*)",
+        instruction,
+    )[0]
+    sensor = (int(sensor_x), int(sensor_y))
+    beacon = (int(beacon_x), int(beacon_y))
+    radar = Radar(sensor=sensor, beacon=beacon)
+    environment.add_beacon(*beacon)
+    environment.add_sensor(*sensor)
+    environment.marked_as_occupied(*sensor, radar.get_distance())
 
-# print(
-#     len([
-#         point
-#         for point, type in environment.points.items()
-#         if type == "#" and point[1] == ROW_CHECKED
-#     ])
-# )
+print(
+    len(
+        [
+            point
+            for point, type in environment.points.items()
+            if type == "#" and point[1] == ROW_CHECKED
+        ]
+    )
+)
 
 print("------ PART 2 ------")
 
